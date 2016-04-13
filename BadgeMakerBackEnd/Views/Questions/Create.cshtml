@@ -8,9 +8,12 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
+
         <h4>Question</h4>
         <hr />
+
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+
         <div class="form-group">
             <label asp-for="Owner" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -18,6 +21,7 @@
                 <span asp-validation-for="Owner" class="text-danger" />
             </div>
         </div>
+
         <div class="form-group">
             <label asp-for="QuestionText" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -25,64 +29,48 @@
                 <span asp-validation-for="QuestionText" class="text-danger" />
             </div>
         </div>
+
+        <h4>Options</h4>
+        <hr />
+
         <div class="form-group">
-
-            @*@if (Model.Options == null)
-            {*@
-
             <div id="responses"></div>
-                 
-            <a class="btn btn-default" id="addButton">Add a New</a>
- 
-                @*@foreach (var item in Model.Options)
-                    {
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox">
-                                    <input asp-for="Options[0].IsCorrect" />
-                                    <label asp-for="Options[0].IsCorrect"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Options[0].Title" class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <input asp-for="Options[0].Title" class="form-control" />
-                                <span asp-validation-for="Options[0].Title" class="text-danger" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                            </div>
-                        </div>
-                    }*@
+            
+            <br />
+
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-default" id="addButton">Add New Option</a>
             </div>
+        </div>
+
+        <hr />
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create Question" class="btn btn-default" />
                 </div>
             </div>
         </div>
-        </form>
+</form>
 
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-        @section Scripts {
-            <script src="~/lib/jquery/dist/jquery.min.js"></script>
-            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-<script>
+    <script>
 
-    $("#addButton").click(add)
+        $("#addButton").click(add)
 
-    function add() {
-        var optionNumber = $("#responses h2").length;
-        $("#responses").append("<h2>QuestionOption " + optionNumber + "</h2>")
-        $("#responses").append("<input name=\"Options[" + optionNumber + "].Title\" class=\"form-control valid\" id=\"Options_" + optionNumber + "__Title\" aria-invalid=\"false\" type=\"text\" value=\"Wow " + optionNumber + "\">")
-    }
-</script>
+        function add() {
+            var optionNumber = $("#responses label").length;
+            $("#responses").append("<label class=\"col-md-2 control-label\" for=\"Options_" + optionNumber + "__Title\">Option " + optionNumber + "</label>")
+            $("#responses").append("<div class=\"col-md-10\"><input name=\"Options[" + optionNumber + "].Title\" class=\"form-control valid\" id=\"Options_" + optionNumber + "__Title\" aria-invalid=\"false\" type=\"text\"></div>")
+            $("#responses").append("<div class=\"col-md-offset-2 col-md-10\"><div class=\"checkbox\"><input data-val=\"true\" data-val-required=\"The IsCorrect field is required.\" id=\"Options_" + optionNumber + "__IsCorrect\" name=\"Options_" + optionNumber + "__IsCorrect\" type=\"checkbox\" value=\"true\">"
+                + "<label for=\"Options_" + optionNumber + "__IsCorrect\">IsCorrect</label></div></div><br />");
         }
+    </script>
+}
