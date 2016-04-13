@@ -4,6 +4,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using BadgeMakerBackEnd.Models;
+using System.Collections.Generic;
 
 namespace BadgeMakerBackEnd.Controllers
 {
@@ -42,7 +43,7 @@ namespace BadgeMakerBackEnd.Controllers
         // GET: Questions/Create
         public IActionResult Create()
         {
-            return View();
+           return View();
         }
 
         // POST: Questions/Create
@@ -67,7 +68,7 @@ namespace BadgeMakerBackEnd.Controllers
                 return HttpNotFound();
             }
 
-            Question question = await _context.Question.SingleAsync(m => m.Id == id);
+            Question question = await _context.Question.Include(x => x.Options).SingleAsync(m => m.Id == id);
             if (question == null)
             {
                 return HttpNotFound();
