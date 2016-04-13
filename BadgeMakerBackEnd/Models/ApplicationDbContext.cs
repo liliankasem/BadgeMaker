@@ -19,5 +19,6 @@ namespace BadgeMakerBackEnd.Models
         }
         public DbSet<Question> Question { get; set; }
         public DbSet<QuestionOption> QuestionOption { get; set; }
+        public DbSet<Quiz> Quiz { get; set; }
     }
 }
