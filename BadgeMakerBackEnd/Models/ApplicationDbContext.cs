@@ -18,5 +18,6 @@ namespace BadgeMakerBackEnd.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<Question> Question { get; set; }
+        public DbSet<QuestionOption> QuestionOption { get; set; }
     }
 }
