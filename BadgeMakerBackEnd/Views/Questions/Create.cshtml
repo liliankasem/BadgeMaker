@@ -67,10 +67,10 @@
 
         function add() {
             var optionNumber = $("#responses h2").length;
-            $("#responses").append("<h2></h2><label class=\"col-md-2 control-label\" for=\"Options_" + optionNumber + "__Title\">Option " + optionNumber + "</label>")
+            $("#responses").append("<h2></h2><label class=\"col-md-2 control-label\" for=\"Options_" + optionNumber + "__Title\">Option " + (optionNumber+1) + "</label>")
             $("#responses").append("<div class=\"col-md-10\"><input name=\"Options[" + optionNumber + "].Title\" class=\"form-control valid\" id=\"Options_" + optionNumber + "__Title\" aria-invalid=\"false\" type=\"text\"></div>")
-            $("#responses").append("<div class=\"col-md-offset-2 col-md-10\"><div class=\"checkbox\"><input data-val=\"true\" data-val-required=\"The IsCorrect field is required.\" id=\"Options_" + optionNumber + "__IsCorrect\" name=\"Options_" + optionNumber + "__IsCorrect\" type=\"checkbox\" value=\"true\">"
-                + "<label for=\"Options_" + optionNumber + "__IsCorrect\">IsCorrect</label></div></div><br />");
+            $("#responses").append("<div class=\"col-md-offset-2 col-md-10\"><div class=\"checkbox\"><input data-val=\"true\" data-val-required=\"The IsCorrect field is required.\" id=\"Options_" + optionNumber + "__IsCorrect\" name=\"Options[" + optionNumber + "].IsCorrect\" type=\"checkbox\" value=\"true\">"
+                + "<label for=\"Options_" + optionNumber + "__IsCorrect\">IsCorrect</label></div><br /></div>");
         }
     </script>
 }
